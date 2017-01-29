@@ -20,7 +20,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
-
 public class Main extends Application {
 
   public Main() {
