@@ -35,7 +35,7 @@ public class Main extends Application {
   }
 
   /**
-   * Login Screen 
+   * Login Screen    
    * @param primaryStage
    */
   public void start(final Stage primaryStage) {
@@ -70,7 +70,7 @@ public class Main extends Application {
       }
     });
     
-    authentication.setSpacing(20);
+    authentication.setSpacing(15);
     authentication.getChildren().addAll(title, username, password, loginButton);
     root.getChildren().addAll(authentication);
     root.setStyle("-fx-background-color: transparent;");
