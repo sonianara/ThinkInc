@@ -7,10 +7,12 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -40,23 +42,31 @@ public class Main extends Application {
   public void start(final Stage primaryStage) {
     StackPane root = new StackPane();
     VBox authentication = new VBox();
+    HBox guestLogin = new HBox();
     TextField username = new TextField();
     Button loginButton = new Button();
     PasswordField password = new PasswordField();
-    // www.logomakr.com/5mcZwA
-    Image img = new Image("file:images/PlanIt.png");
+    Image img = new Image("file:images/Logo.png");    // www.logomakr.com/5mcZwA
     ImageView imgView = new ImageView(img);
     BooleanProperty firstTime = new SimpleBooleanProperty(true); 
-
+    Label guestLabel = new Label("Not a registered user?");
+    Hyperlink guestUser = new Hyperlink();
+    
+    guestUser.setText("Login here");
     username.setStyle("-fx-background-radius: 10 10 10 10");
     password.setStyle("-fx-background-radius: 10 10 10 10");
     loginButton.setStyle("-fx-background-radius: 10 10 10 10");
+    
+    imgView.setFitHeight(500);
+    imgView.setFitWidth(500);
+    imgView.setPreserveRatio(true);
     
     authentication.setAlignment(Pos.CENTER);
     authentication.setPadding(new Insets(0, 100, 0, 100));
     username.setPromptText("Username");
     password.setPromptText("Password");
     loginButton.setText("Login");
+    guestLogin.setAlignment(Pos.CENTER);
     
     //check if the username and password is correct 
     loginButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -73,8 +83,9 @@ public class Main extends Application {
       }
     });
     
+    guestLogin.getChildren().addAll(guestLabel, guestUser);
     authentication.setSpacing(15);
-    authentication.getChildren().addAll(imgView, username, password, loginButton);
+    authentication.getChildren().addAll(imgView, username, password, loginButton, guestLogin);
     root.getChildren().addAll(authentication);
     root.setStyle("-fx-background-color: transparent;");
     primaryStage.setTitle("ThinkInc");
