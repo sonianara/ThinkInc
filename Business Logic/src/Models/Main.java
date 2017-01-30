@@ -5,12 +5,12 @@ import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.stage.Stage;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -43,11 +43,15 @@ public class Main extends Application {
     TextField username = new TextField();
     Button loginButton = new Button();
     PasswordField password = new PasswordField();
-    Label title = new Label("Think Inc.");
+    // www.logomakr.com/5mcZwA
+    Image img = new Image("file:images/PlanIt.png");
+    ImageView imgView = new ImageView(img);
     BooleanProperty firstTime = new SimpleBooleanProperty(true); 
+
+    username.setStyle("-fx-background-radius: 10 10 10 10");
+    password.setStyle("-fx-background-radius: 10 10 10 10");
+    loginButton.setStyle("-fx-background-radius: 10 10 10 10");
     
-    title.setPadding(new Insets(0, 0, 100, 0));
-    title.setFont(new Font("Cambria", 75));
     authentication.setAlignment(Pos.CENTER);
     authentication.setPadding(new Insets(0, 100, 0, 100));
     username.setPromptText("Username");
@@ -70,11 +74,11 @@ public class Main extends Application {
     });
     
     authentication.setSpacing(15);
-    authentication.getChildren().addAll(title, username, password, loginButton);
+    authentication.getChildren().addAll(imgView, username, password, loginButton);
     root.getChildren().addAll(authentication);
     root.setStyle("-fx-background-color: transparent;");
     primaryStage.setTitle("ThinkInc");
-    primaryStage.setScene(new Scene(root, 800, 800, Color.THISTLE));
+    primaryStage.setScene(new Scene(root, 800, 800, Color.LIGHTGRAY));
     primaryStage.show();
   }
   
