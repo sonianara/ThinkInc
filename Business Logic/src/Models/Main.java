@@ -31,8 +31,15 @@ public class Main extends Application {
   /**
    * Function that validates the username and password
    */
-  public void checkPassword(TextField username, PasswordField password) {
+  public int checkPassword(TextField username, PasswordField password) {
+    int departmentScheduler = 1;
+    int faculty = 2;
+    int guest = 3;
     
+    if (true) {
+      return 1;
+    }
+    return 0;
   }
 
   /**
@@ -71,7 +78,11 @@ public class Main extends Application {
     //check if the username and password is correct 
     loginButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override public void handle(ActionEvent e) {
-          checkPassword(username, password);
+          int permission = checkPassword(username, password);
+          
+          if (permission == 1) {
+            dptSchedulerMainPage(primaryStage);
+          }
       }
     });
     
@@ -90,6 +101,29 @@ public class Main extends Application {
     root.setStyle("-fx-background-color: transparent;");
     primaryStage.setTitle("ThinkInc");
     primaryStage.setScene(new Scene(root, 800, 800, Color.LIGHTGRAY));
+    primaryStage.show();
+  }
+  
+  /**
+   * Main Page for the department scheduler after logging in 
+   */
+  public static void dptSchedulerMainPage(Stage primaryStage) {
+    StackPane sp = new StackPane();
+    HBox menuBar = new HBox();
+    Image img = new Image("file:images/Hamburger.png");   
+    ImageView imgView = new ImageView(img); 
+    
+    menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
+    imgView.setFitHeight(25);
+    imgView.setFitWidth(25);
+    imgView.setPreserveRatio(true);
+  
+    menuBar.setStyle("-fx-background-color: #939393");
+    menuBar.setMaxHeight(20);
+    menuBar.getChildren().addAll(imgView);
+    sp.getChildren().addAll(menuBar);
+    sp.setStyle("-fx-background-color: transparent;");
+    primaryStage.setScene(new Scene(sp, 800, 800, Color.LIGHTGRAY));
     primaryStage.show();
   }
   
