@@ -4,6 +4,7 @@ import javafx.scene.control.Label;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -21,6 +23,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 
 public class Main extends Application {
 
@@ -42,6 +45,19 @@ public class Main extends Application {
     return 0;
   }
 
+  /**
+   * Function that fits the application to the screen size
+   * @param primaryStage
+   */
+  public static void fitToScreen(Stage primaryStage) {
+    Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+
+    primaryStage.setX(primaryScreenBounds.getMinX());
+    primaryStage.setY(primaryScreenBounds.getMinY());
+    primaryStage.setWidth(primaryScreenBounds.getWidth());
+    primaryStage.setHeight(primaryScreenBounds.getHeight());
+  }
+  
   /**
    * Login Screen    
    * @param primaryStage
@@ -100,7 +116,8 @@ public class Main extends Application {
     root.getChildren().addAll(authentication);
     root.setStyle("-fx-background-color: transparent;");
     primaryStage.setTitle("ThinkInc");
-    primaryStage.setScene(new Scene(root, 800, 800, Color.LIGHTGRAY));
+    fitToScreen(primaryStage);
+    primaryStage.setScene(new Scene(root, Color.LIGHTGREY));
     primaryStage.show();
   }
   
@@ -108,22 +125,28 @@ public class Main extends Application {
    * Main Page for the department scheduler after logging in 
    */
   public static void dptSchedulerMainPage(Stage primaryStage) {
+    BorderPane bp = new BorderPane();
     StackPane sp = new StackPane();
     HBox menuBar = new HBox();
-    Image img = new Image("file:images/Hamburger.png");   
+    Image img = new Image("file:images/icon.png");   
     ImageView imgView = new ImageView(img); 
+
     
     menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
     imgView.setFitHeight(25);
     imgView.setFitWidth(25);
     imgView.setPreserveRatio(true);
   
-    menuBar.setStyle("-fx-background-color: #939393");
-    menuBar.setMaxHeight(20);
+    bp.setTop(menuBar);
+    menuBar.setStyle("-fx-background-color: #545454");
+    menuBar.setMinHeight(40);
     menuBar.getChildren().addAll(imgView);
-    sp.getChildren().addAll(menuBar);
+    menuBar.setAlignment(Pos.TOP_LEFT);
+    sp.getChildren().addAll(bp);
     sp.setStyle("-fx-background-color: transparent;");
-    primaryStage.setScene(new Scene(sp, 800, 800, Color.LIGHTGRAY));
+  
+    fitToScreen(primaryStage);
+    primaryStage.setScene(new Scene(sp, Color.LIGHTGRAY));
     primaryStage.show();
   }
   
