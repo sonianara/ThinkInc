@@ -1,6 +1,8 @@
-class Faculty extends User
+package Models;
+
+public class Faculty extends User
 {
-   private FacultyPreferences preferences;
+   //private FacultyPreferences preferences;
    
    public void setPreferences()
    {
