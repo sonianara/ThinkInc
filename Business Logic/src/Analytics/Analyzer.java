@@ -20,7 +20,12 @@ public class Analyzer {
         while ((nextLine = reader.readLine()) != null) {
             // We want index 6 [class name] and index 10 [seat demand]
             String fields[] = nextLine.split(",");
-            data.put(fields[6], Integer.parseInt(fields[10]));
+            try {
+                data.put(fields[6], Integer.parseInt(fields[10]));
+            }
+            catch (Exception e) { //ignore malformed input
+                continue;
+            }
         }
         return data;
     }
