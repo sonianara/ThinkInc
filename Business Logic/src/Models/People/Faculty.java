@@ -39,4 +39,12 @@ public class Faculty extends User {
         }
         return false;
     }
+
+    public int courseHash(int courseNum){
+        int baseCourse = 101;
+        int index = 0;
+
+        index = courseNum - baseCourse;
+        //do more shit here
+    }
 }
