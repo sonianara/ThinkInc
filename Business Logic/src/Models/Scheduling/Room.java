@@ -1,4 +1,4 @@
-package Models;
+package Models.Scheduling;
 
 import java.util.List;
 
