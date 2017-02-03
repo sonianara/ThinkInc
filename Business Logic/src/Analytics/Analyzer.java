@@ -1,12 +1,8 @@
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.IntSummaryStatistics;
 import java.util.Map;
 
 public class Analyzer {
