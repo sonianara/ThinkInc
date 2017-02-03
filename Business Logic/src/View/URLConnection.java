@@ -1,15 +1,23 @@
 package View;
-import java.io.*; 
+import java.io.*;
+
 import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
 
 public class URLConnection {
   
   private static String url = "http://52.36.156.222:3000/user/signin";
   
   public static void main(String[] args) throws Exception{
-    HttpClient httpclient = new HttpClient();
+    HttpClient httpclient = new HttpClient();   
+    getRequest(httpclient);
+    postRequest(httpclient);
+  }
+  
+  public static void getRequest(HttpClient httpclient) {
     GetMethod method = new GetMethod(url);
+    method.addRequestHeader(new Header("x-access-token", url));
     try {
       // Execute the method.
       int statusCode = httpclient.executeMethod(method);
@@ -34,7 +42,18 @@ public class URLConnection {
     } finally {
       // Release the connection.
       method.releaseConnection();
-    }  
+    }
+  }
+  public static void postRequest(HttpClient httpclient) throws IOException {
+    PostMethod post = new PostMethod();
+    NameValuePair[] data = {
+        new NameValuePair("username", "admin@test.com"),
+        new NameValuePair("password", "testpassword")
+      };
+      post.setRequestBody(data);
+      // execute method and handle any error responses.
+      InputStream in = post.getResponseBodyAsStream();
+      post.releaseConnection();
   }
 }
 
