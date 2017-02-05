@@ -11,3 +11,11 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /bin/
+
+#files containing sensitive information (shouldn't be on github)
+Business Logic/src/Server/res
+Business Logic/src/Server/res/*
+*node_modules*
+
+#all emacs temporary files
+*~
