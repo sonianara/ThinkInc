@@ -7,7 +7,6 @@ package Models.People;
  * @version 1 - initial version. 1/31/2017
  */
 public class User {
-
     private int userID;
     private String userName;
     private String email;

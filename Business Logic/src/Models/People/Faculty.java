@@ -6,14 +6,14 @@ public class Faculty extends User {
 
     private int[][] preferredTimes = new int[DAYS_IN_WEEK][THIRTY_MIN_INTERVALS_PER_DAY];
     private int preferredTotalHours;// workload preference
-    private int[] coursePreferences = new int[];// course preferences -1, 0, 1 <=> CANNOT, CAN, PREFER
+    private int[] coursePreferences = new int[40];// course preferences -1, 0, 1 <=> CANNOT, CAN, PREFER
 
     public Faculty(int userID, String userName, String email, String firstName, String lastName) {
         super(userID, userName, email, firstName, lastName);
     }
 
     public void setPreferences() {
-      return;
+        return;
     }
 
     private boolean addCoursePref(int courseNum, int prefLvl) {
@@ -46,5 +46,6 @@ public class Faculty extends User {
 
         index = courseNum - baseCourse;
         //do more shit here
+        return 0;
     }
 }
